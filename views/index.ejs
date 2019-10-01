@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>BikeShop - Home</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/a7ec7986bf.js"></script>
+</head>
+
+<body>
+
+  <!-- The container is provided by Bootstrap. You could directly use the class container-fluid if you wanted it to take the full screen -->
+  <div class="container">
+    <!-- Rows are used to generate new lines, and therefore it will start to a new column -->
+    <div class="row" id="shop-header">
+      <div class="col-12">
+        <img id="logo-header" src="/images/bike-logo.svg" alt=""> The Bike Shop Experience
+      </div>
+    </div>
+    <div class="row" id="shop-background">
+    </div>
+
+    <div class="row">
+
+    <% for(var i = 0 ; i < dataBike.length ; i++){ %>
+        <div class="col-12 col-sm-6 col-md-4 bike-card">
+          <div class="card text-center">
+            <img class="card-img-top" src="<%=dataBike[i].url%>">
+            <div class="card-body">
+              <h5 class="card-title"><%=dataBike[i].name%></h5>
+              <span class="shop-price"><%=dataBike[i].price%>€</span>
+            <form method="POST" action="/shop">
+              <input type="hidden" name="bikeNameFromFront" value="<%=dataBike[i].name%>">
+              <input type="hidden" name="bikePriceFromFront" value="<%=dataBike[i].price%>">
+              <input type="hidden" name="bikeImageFromFront" value="<%=dataBike[i].url%>">
+              <input type="hidden" name="bikeQuantityFromFront" value="1">
+              <button type="submit" class="btn btn-outline-info btn-sm" name="button">Buy</button>
+            </form>
+            </div>
+          </div>
+        </div>
+    <% } %>
+
+
+    </div>
+
+  </div>
+</body>
+
+</html>
